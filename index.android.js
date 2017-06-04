@@ -22,7 +22,7 @@ export default class MyAnimations extends Component {
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
-        <FadeInView>
+        <FadeInView style={{backgroundColor: 'powderblue'}}>
           <Text style={styles.instructions}>
             To get started, edit index.android.js
           </Text>

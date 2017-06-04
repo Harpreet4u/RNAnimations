@@ -22,14 +22,17 @@ class FadeInView extends Component {
   }
 
   _getStyles() {
-    return this.props.style ? this.props.style : {};
+    return this.props.style !== undefined ? this.props.style : {};
   }
 
   render() {
     // For performance reasons always pass object
     // instead of using spread operator.
     let givenStyle = this._getStyles();
-    let propStyle = Object.assign({}, ...givenStyle,
+    let propStyle = Object.assign({},
+      {
+        ...givenStyle
+      },
       {
         opacity: this.state.fadeAnim
       });
