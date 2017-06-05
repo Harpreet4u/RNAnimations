@@ -14,7 +14,8 @@ import {
   LayoutAnimation,
   UIManager,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform,
 } from 'react-native';
 
 import {
@@ -26,7 +27,7 @@ import {
 
 import FadeInView from './FadeInView';
 
-const {height, width} = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
 const uiTheme = {
   pallete: {
     primaryColor: COLOR.gree500,
@@ -41,8 +42,20 @@ const uiTheme = {
 export default class MyAnimations extends Component {
   constructor(props) {
     super(props);
-    UIManager.setLayoutAnimationEnabledExperimental &&
-      UIManager.setLayoutAnimationEnabledExperimental(true);
+    /*let originalGetDefaultProps = Text.getDefaultProps;
+    Text.getDefaultProps = function() {
+      return {
+        ...originalGetDefaultProps(),
+        allowFontScaling: false,
+      };
+    };*/
+    // Fixes Text scaling issue on android
+    Text.defaultProps.allowFontScaling = false;
+    if (Platform.OS === 'android') {
+      // Required for running animations on Android.
+      UIManager.setLayoutAnimationEnabledExperimental &&
+        UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
 
     this.state = {w: 100, h: 100};
     this._onPress = this._onPress.bind(this);
@@ -83,9 +96,9 @@ export default class MyAnimations extends Component {
           </TouchableOpacity>
           <View>
             <Button primary text="Primary" />
-            <Button primary text="Accent" />
-            <Button raised primary text="Primary Raised" />
-            <Button disabled text="Disabled" />
+            <Button primary text="Accent " />
+            <Button raised primary text="Primary Raised " />
+            <Button disabled text="Disabled " />
           </View>
 
           <ActionButton
