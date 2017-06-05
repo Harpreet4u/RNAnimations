@@ -24,6 +24,7 @@ import {
   Button,
   ActionButton,
   Toolbar,
+  RadioButton,
 } from 'react-native-material-ui';
 
 import FadeInView from './FadeInView';
@@ -102,13 +103,22 @@ export default class MyAnimations extends Component {
               </View>
             </TouchableOpacity>
             </View>
-          <View style={{alignItems: 'center'}}>
+          <View style={{flex: 3, alignItems: 'center'}}>
             <Button primary text="Primary " />
             <Button primary text="Accent " />
             <Button raised primary text="Primary Raised " />
             <Button disabled text="Disabled " />
           </View>
-
+          <View style={{ flex: 1 }}>
+            <RadioButton
+              label="Unchecked"
+              checked
+              checkedIcon="star"
+              uncheckedIcon="star-border"
+              value="Value"
+              />
+          </View>
+          
           <ActionButton
             icon="done"
             actions={['email', { icon: 'phone', label: 'Phone' }, 'sms', 'favorite']}
