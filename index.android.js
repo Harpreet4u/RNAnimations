@@ -23,6 +23,7 @@ import {
   ThemeProvider,
   Button,
   ActionButton,
+  Toolbar,
 } from 'react-native-material-ui';
 
 import FadeInView from './FadeInView';
@@ -74,6 +75,11 @@ export default class MyAnimations extends Component {
     return (
       <ThemeProvider uiTheme={uiTheme}>
         <View style={styles.container}>
+          <Toolbar
+            leftElement="arrow-back"
+            onLeftElementPress={() => {console.log("Hello");}}
+            centerElement="Awesome React"
+          />
           <Text style={styles.welcome}>
             Welcome to React Native!
           </Text>
@@ -86,16 +92,18 @@ export default class MyAnimations extends Component {
               Shake or press menu button for dev menu
             </Text>
           </FadeInView>
-          <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
-          <TouchableOpacity onPress ={this._onPress}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>
-                Press me!
-              </Text>
+          <View style={{alignItems: 'center'}}>
+            <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
+            <TouchableOpacity onPress ={this._onPress}>
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>
+                  Press me!
+                </Text>
+              </View>
+            </TouchableOpacity>
             </View>
-          </TouchableOpacity>
-          <View>
-            <Button primary text="Primary" />
+          <View style={{alignItems: 'center'}}>
+            <Button primary text="Primary " />
             <Button primary text="Accent " />
             <Button raised primary text="Primary Raised " />
             <Button disabled text="Disabled " />
@@ -115,8 +123,8 @@ export default class MyAnimations extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    //justifyContent: 'center',
+    //alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
   welcome: {
