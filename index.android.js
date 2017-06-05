@@ -13,10 +13,30 @@ import {
   Animated,
   LayoutAnimation,
   UIManager,
+  Dimensions,
   TouchableOpacity
 } from 'react-native';
 
+import {
+  COLOR,
+  ThemeProvider,
+  Button,
+  ActionButton,
+} from 'react-native-material-ui';
+
 import FadeInView from './FadeInView';
+
+const {height, width} = Dimensions.get('window');
+const uiTheme = {
+  pallete: {
+    primaryColor: COLOR.gree500,
+  },
+  toolbar: {
+    container: {
+      height: 50,
+    }
+  }
+};
 
 export default class MyAnimations extends Component {
   constructor(props) {
@@ -39,28 +59,42 @@ export default class MyAnimations extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <FadeInView style={{backgroundColor: 'powderblue'}}>
-          <Text style={styles.instructions}>
-            To get started, edit index.android.js
+      <ThemeProvider uiTheme={uiTheme}>
+        <View style={styles.container}>
+          <Text style={styles.welcome}>
+            Welcome to React Native!
           </Text>
-          <Text style={styles.instructions}>
-            Double tap R on your keyboard to reload,{'\n'}
-            Shake or press menu button for dev menu
-          </Text>
-        </FadeInView>
-        <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
-        <TouchableOpacity onPress ={this._onPress}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>
-              Press me!
+          <FadeInView style={{backgroundColor: 'powderblue'}}>
+            <Text style={styles.instructions}>
+              To get started, edit index.android.js
             </Text>
+            <Text style={styles.instructions}>
+              Double tap R on your keyboard to reload,{'\n'}
+              Shake or press menu button for dev menu
+            </Text>
+          </FadeInView>
+          <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
+          <TouchableOpacity onPress ={this._onPress}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>
+                Press me!
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <View>
+            <Button primary text="Primary" />
+            <Button primary text="Accent" />
+            <Button raised primary text="Primary Raised" />
+            <Button disabled text="Disabled" />
           </View>
-        </TouchableOpacity>
-      </View>
+
+          <ActionButton
+            icon="done"
+            actions={['email', { icon: 'phone', label: 'Phone' }, 'sms', 'favorite']}
+            transition="speedDial"
+          />
+        </View>
+      </ThemeProvider>
     );
   }
 }
