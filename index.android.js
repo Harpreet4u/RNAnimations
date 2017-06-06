@@ -25,6 +25,7 @@ import {
   ActionButton,
   Toolbar,
   RadioButton,
+  BottomNavigation,
 } from 'react-native-material-ui';
 
 import FadeInView from './FadeInView';
@@ -59,7 +60,7 @@ export default class MyAnimations extends Component {
         UIManager.setLayoutAnimationEnabledExperimental(true);
     }
 
-    this.state = {w: 100, h: 100};
+    this.state = {w: 100, h: 100, active: 'today'};
     this._onPress = this._onPress.bind(this);
   }
 
@@ -118,12 +119,48 @@ export default class MyAnimations extends Component {
               value="Value"
               />
           </View>
-          
+
           <ActionButton
             icon="done"
-            actions={['email', { icon: 'phone', label: 'Phone' }, 'sms', 'favorite']}
+            actions={['email', 'phone', 'sms', 'favorite']}
             transition="speedDial"
+            style={{ positionContainer: { bottom: 76} }}
           />
+
+          <BottomNavigation
+            active={this.state.active}
+            style={{ container: {  position: 'absolute', bottom: 0, left: 0, right: 0 } }}
+             >
+              <BottomNavigation.Action
+                  key="today"
+                  icon="today"
+                  label="Today"
+                  onPress={() => this.setState({ active: 'today' })}
+                  style={{container: {minWidth:null}}}
+              />
+              <BottomNavigation.Action
+                  key="people"
+                  icon="people"
+                  label="People"
+                  onPress={() => this.setState({ active: 'people' })}
+                  style={{container: {minWidth:null}}}
+              />
+              <BottomNavigation.Action
+                  key="bookmark-border"
+                  icon="bookmark-border"
+                  label="Bookmark"
+                  onPress={() => this.setState({ active: 'bookmark-border' })}
+                  style={{container: {minWidth:null}}}
+              />
+              <BottomNavigation.Action
+                  key="settings"
+                  icon="settings"
+                  label="Settings"
+                  onPress={() => this.setState({ active: 'settings' })}
+                  style={{container: {minWidth:null}}}
+              />
+          </BottomNavigation>
+
         </View>
       </ThemeProvider>
     );
