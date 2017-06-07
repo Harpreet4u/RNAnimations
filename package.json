@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.2",
+    "react-native-audio": "^3.2.2",
     "react-native-material-ui": "^1.12.0",
     "react-native-vector-icons": "^4.2.0"
   },
