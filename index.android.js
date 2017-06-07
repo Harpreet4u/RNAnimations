@@ -29,6 +29,7 @@ import {
 } from 'react-native-material-ui';
 
 import FadeInView from './FadeInView';
+import audioService from './src/services/audio';
 
 const { height, width } = Dimensions.get('window');
 const uiTheme = {
@@ -71,6 +72,7 @@ export default class MyAnimations extends Component {
   _onPress() {
     LayoutAnimation.spring();
     this.setState({w: this.state.w + 15, h: this.state.h + 15});
+    audioService.playSuccessSound();
   }
 
   render() {
