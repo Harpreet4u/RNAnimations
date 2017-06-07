@@ -123,6 +123,7 @@ export default class MyAnimations extends Component {
           </View>
 
           <ActionButton
+            onPress={()=>{audioService.playButtonSound();}}
             icon="done"
             actions={['email', 'phone', 'sms', 'favorite']}
             transition="speedDial"
