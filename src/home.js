@@ -3,23 +3,27 @@ import { LayoutAnimation, StyleSheet } from 'react-native';
 import { Image, View } from 'react-native-animatable';
 import Tile from './tile';
 import audioService from './services/audio';
-import metrics from 'config/metrics';
+import metrics from './config/metrics';
 
-
-export default class Home extends Components {
+export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      tileNumber: 3,
+      tileColor: '#BC0437',
       hasPressedButton: false,
       hasHeaderAppeared: false,
     };
+
+    this._header =  null;
+    this._body =  null;
   }
 
   componentDidMount() {
-    if (this.refs.header) {
-      this.refs.header.bounceInRight(1000).then(() => {
+    if (this._header) {
+      this._header.bounceInRight(3000).then(() => {
         LayoutAnimation.spring();
-        this.state({ hasHeaderAppeared: true });
+        this.setState({ hasHeaderAppeared: true });
       });
     }
   }
@@ -30,20 +34,20 @@ export default class Home extends Components {
 
   _handleButtonPress = async () => {
     this.setState({ hasPressedButton: true });
-    if (this.refs.header && this.refs.body) {
-      await Promise.all([this.refs.header.fadeOutLeft(400), this.refs.body.fadeOutRight(400)]);
+    if (this._header && this._body) {
+      await Promise.all([this._header.fadeOutLeft(400), this._body.fadeOutRight(400)]);
     }
     // Other things here...
   };
 
   render() {
-    const { hasHeaderAppeared, hasPressedButton } = this.state;
+    const { hasHeaderAppeared, tileNumber, tileColor, hasPressedButton } = this.state;
 
     return (
-      <View style={style.container}>
+      <View style={styles.container} useNativeDriver>
         <View
           style={styles.header}
-          ref="header">
+          ref={refs => {this._header = refs;}}>
           
           <View style={styles.headerLeft}>
             <Tile
@@ -56,13 +60,13 @@ export default class Home extends Components {
             />
           </View>
           <View style={styles.headerRight}>
-            <Image resizeMode={'contain'} source={LogoImage} style={styles.logo} />
+            <Image resizeMode={'contain'} source={require("./images/logo.png")} style={styles.logo} />
           </View>
         </View>
         { hasHeaderAppeared &&
           <View
             style={styles.body}
-            ref="body">
+            ref={refs => {this._body = refs;}}>
             <Tile
               backgroundColor={tileColor}
               text={'Start Game'}
@@ -104,9 +108,9 @@ const styles = StyleSheet.create({
   },
   logo: {
     flex: 1,
-    marginLeft: metris.DEVICE_WIDTH * 0.05,
+    marginLeft: metrics.DEVICE_WIDTH * 0.05,
     height: null,
-    width: LogoWidth,
+    width: logoWidth,
   },
   body: {
     flex: 1,

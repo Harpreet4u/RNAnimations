@@ -30,6 +30,7 @@ import {
 
 import FadeInView from './FadeInView';
 import audioService from './src/services/audio';
+import Home from './src/home';
 
 const { height, width } = Dimensions.get('window');
 const uiTheme = {
@@ -76,6 +77,12 @@ export default class MyAnimations extends Component {
   }
 
   render() {
+    return (
+        <Home />
+        );
+  }
+
+  trender() {
     return (
       <ThemeProvider uiTheme={uiTheme}>
         <View style={styles.container}>
