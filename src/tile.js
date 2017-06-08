@@ -112,8 +112,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
+    // reason for fonts not working in android
+    // font should be saved as fontname_bold.ttf
     fontWeight: 'bold',
-    fontFamily: 'Permanent Marker',
+    fontFamily: 'PermanentMarker',
     fontSize: 39,
   },
 });

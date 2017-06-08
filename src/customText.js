@@ -28,7 +28,7 @@ const CustomText = (props) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'Permanent Marker',
+    fontFamily: 'PermanentMarker',
     padding: 8, // Fixes cutted off text
   },
 });
