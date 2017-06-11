@@ -2,10 +2,23 @@ import React, { Component } from 'react';
 import { LayoutAnimation, StyleSheet } from 'react-native';
 import { Image, View } from 'react-native-animatable';
 import Tile from './tile';
+import boardUtils from './boardUtils';
 import audioService from './services/audio';
 import metrics from './config/metrics';
+import { inject, observer } from 'mobx-react/native';
 
+@inject(allStores => ({
+  navigateToPlayground: allStores.router.navigateToPlayground,
+  navigateToEndgame: allStores.router.navigateToEndgame,
+}))
+
+@observer
 export default class Home extends Component {
+  static defaultProps = {
+    navigateToPlayground: () => null,
+    navigateToEndgame: () => null,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -30,6 +43,11 @@ export default class Home extends Component {
 
   _handleTilePress = () => {
     console.log("Tile pressed");
+    const { tileNumber, tileColor } = this.state;
+    this.setState({
+      tileNumber: tileNumber === 99 ? 1 : tileNumber + 1,
+      tileColor: boardUtils.getRandomTileColor([tileColor])
+    });
   }
 
   _handleButtonPress = async () => {
@@ -38,6 +56,7 @@ export default class Home extends Component {
       await Promise.all([this._header.fadeOutLeft(400), this._body.fadeOutRight(400)]);
     }
     // Other things here...
+    this.props.navigateToPlayground();
   };
 
   render() {

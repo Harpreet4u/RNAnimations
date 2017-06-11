@@ -9,7 +9,9 @@ import CustomText from './customText';
 import colorUtils from './colorUtils';
 import audioService from './services/audio';
 import metrics from './config/metrics';
+import { observer } from 'mobx-react/native';
 
+@observer
 export default class Tile extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,10 @@ export default class Tile extends Component {
       hasBeenPressed: false,
     };
   }
+
+  _containerRef = null;
+
+  getContainerRef = () => this._containerRef;
 
   _handlePressIn = () => {
     const { isEnabled, singlePressOnly, onPressIn, playSound} = this.props;

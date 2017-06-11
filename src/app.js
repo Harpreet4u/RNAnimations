@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import { StatusBar, StyleSheet } from 'react-native';
+import { inject, observer } from 'mobx-react/native';
 import { Image, View } from 'react-native-animatable';
-//import Playground from './playground';
+import Playground from './playground';
 import Home from './home';
-//import Endgame from './endgame';
+import Endgame from './endGame';
 
+@inject(allStores => ({
+  currentScreen: allStores.router.currentScreen,
+}))
+
+@observer
 export default class App extends Component {
+
+  static defaultProps = {
+    currentScreen: 'HOME'
+  };
 
   render() {
     let content;
@@ -14,10 +24,10 @@ export default class App extends Component {
         content = <Home />;
         break;
       case 'PLAYGROUND':
-        //content = <Playground />;
+        content = <Playground />;
         break;
       case 'ENDGAME':
-        //content = <Endgame />;
+        content = <Endgame />;
         break;
       default:
         content = <View />;
@@ -31,10 +41,6 @@ export default class App extends Component {
     );
   }
 }
-
-App.defaultProps = {
-  currentScreen: 'HOME',
-};
 
 const styles = StyleSheet.create({
   container: {
