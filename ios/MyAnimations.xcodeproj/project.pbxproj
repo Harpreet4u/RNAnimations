@@ -51,6 +51,7 @@
 		D4B5957D04314FB8AD2D3CBF /* pp.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B7545B0945C4B80AD237BDD /* pp.ttf */; };
 		3F0990EBD7B44267956A10B9 /* New Walt Disney.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72792B822BE54BDFA561A4D7 /* New Walt Disney.ttf */; };
 		ABCE685B5D16408184BE137B /* PermanentMarker.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61191F9393A64D2390EED84A /* PermanentMarker.ttf */; };
+		4ABAE646C96A4BD7B89B2FAB /* PermanentMarker_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CC638572D0B41ABBA2FA174 /* PermanentMarker_bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -289,6 +290,7 @@
 		7B7545B0945C4B80AD237BDD /* pp.ttf */ = {isa = PBXFileReference; name = "pp.ttf"; path = "../src/assets/fonts/pp.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		72792B822BE54BDFA561A4D7 /* New Walt Disney.ttf */ = {isa = PBXFileReference; name = "New Walt Disney.ttf"; path = "../src/assets/fonts/New Walt Disney.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		61191F9393A64D2390EED84A /* PermanentMarker.ttf */ = {isa = PBXFileReference; name = "PermanentMarker.ttf"; path = "../src/assets/fonts/PermanentMarker.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6CC638572D0B41ABBA2FA174 /* PermanentMarker_bold.ttf */ = {isa = PBXFileReference; name = "PermanentMarker_bold.ttf"; path = "../src/assets/fonts/PermanentMarker_bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -540,6 +542,7 @@
 				7B7545B0945C4B80AD237BDD /* pp.ttf */,
 				72792B822BE54BDFA561A4D7 /* New Walt Disney.ttf */,
 				61191F9393A64D2390EED84A /* PermanentMarker.ttf */,
+				6CC638572D0B41ABBA2FA174 /* PermanentMarker_bold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -916,6 +919,7 @@
 				D4B5957D04314FB8AD2D3CBF /* pp.ttf in Resources */,
 				3F0990EBD7B44267956A10B9 /* New Walt Disney.ttf in Resources */,
 				ABCE685B5D16408184BE137B /* PermanentMarker.ttf in Resources */,
+				4ABAE646C96A4BD7B89B2FAB /* PermanentMarker_bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
