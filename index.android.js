@@ -30,7 +30,7 @@ import {
 
 import FadeInView from './FadeInView';
 import audioService from './src/services/audio';
-import App from './src/app';
+import TapTheNumber from './src';
 
 const { height, width } = Dimensions.get('window');
 const uiTheme = {
@@ -62,7 +62,9 @@ export default class MyAnimations extends Component {
         UIManager.setLayoutAnimationEnabledExperimental(true);
     }
 
-    this.state = {w: 100, h: 100, active: 'today'};
+    this.state = {
+      w: 100, h: 100, active: 'today',      
+    };
     this._onPress = this._onPress.bind(this);
   }
 
@@ -78,7 +80,7 @@ export default class MyAnimations extends Component {
 
   render() {
     return (
-        <App />
+        <TapTheNumber />
         );
   }
 
